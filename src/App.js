@@ -3,17 +3,19 @@ import axios from 'axios';
 
 export default function App() {
   const [results, setResults] = useState([])
+  const [query, setQuery] = useState('reacthooks')
   useEffect(() => {
     getResults()
-  }, [])
+  }, [query])
 
   const getResults = async () => {
-    const response = await axios.get('http://hn.algolia.com/api/v1/search?query=reacthooks')
+    const response = await axios.get(`http://hn.algolia.com/api/v1/search?query=${query}`)
     setResults(response.data.hits)
   }
   
   return(
     <>
+    <input type='text' onChange={event => setQuery(event.target.value)}></input>
     <ul>
       {results.map(result => (
         <li key={result.objectID}>
