@@ -56,7 +56,7 @@ export default function App() {
         </li>
       ))}
     </ul>)}
-
+    {error && <div>{error.message}</div>}
     </>
   )
 }
