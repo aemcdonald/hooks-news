@@ -6,7 +6,7 @@ export default function App() {
   const [query, setQuery] = useState('react hooks')
   useEffect(() => {
     getResults()
-  }, [query])
+  }, [])
 
   const getResults = async () => {
     const response = await axios.get(`http://hn.algolia.com/api/v1/search?query=${query}`)
@@ -20,6 +20,7 @@ export default function App() {
       value={query}
       onChange={event => setQuery(event.target.value)}>
     </input>
+    <button type='button'onClick={getResults}>Search</button>
     <ul>
       {results.map(result => (
         <li key={result.objectID}>
