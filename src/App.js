@@ -12,6 +12,15 @@ export default function App() {
   })
   
   return(
-    <div>App</div>
+    <>
+    <ul>
+      {results.map(result => (
+        <li key={result.objectID}>
+          <a href={result.url}>{result.title}</a>
+        </li>
+      ))}
+    </ul>
+    </>
   )
 }
+
