@@ -41,13 +41,17 @@ export default function App() {
     <button type='submit'>Search</button>
     <button type='button'onClick={clearForm}>Clear</button>
     </form>
+    {loading ? (
+      <div>Loading results...</div>
+    ) : (
     <ul>
       {results.map(result => (
         <li key={result.objectID}>
           <a href={result.url}>{result.title}</a>
         </li>
       ))}
-    </ul>
+    </ul>)}
+
     </>
   )
 }
