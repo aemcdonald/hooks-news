@@ -12,15 +12,22 @@ export default function App() {
     const response = await axios.get(`http://hn.algolia.com/api/v1/search?query=${query}`)
     setResults(response.data.hits)
   }
+
+  const handleSubmit = event => {
+    event.preventDefault()
+    getResults()
+  }
   
   return(
     <>
+    <form onSubmit={handleSubmit}>
     <input 
       type='text' 
       value={query}
       onChange={event => setQuery(event.target.value)}>
     </input>
-    <button type='button'onClick={getResults}>Search</button>
+    <button type='submit'>Search</button>
+    </form>
     <ul>
       {results.map(result => (
         <li key={result.objectID}>
