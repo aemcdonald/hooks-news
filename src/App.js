@@ -17,6 +17,11 @@ export default function App() {
     event.preventDefault()
     getResults()
   }
+
+  const clearForm = event => {
+    event.preventDefault()
+    setQuery('')
+  }
   
   return(
     <>
@@ -27,6 +32,7 @@ export default function App() {
       onChange={event => setQuery(event.target.value)}>
     </input>
     <button type='submit'>Search</button>
+    <button type='button'onClick={clearForm}>Clear</button>
     </form>
     <ul>
       {results.map(result => (
